@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Invoice Extraction</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script defer src="/app.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Invoice extraction</p>
+          <h1>Upload invoices, extract JSON, and review results</h1>
+          <p class="lead">
+            This frontend is Netlify-ready. Point it to your separate backend API, then upload a PDF or image invoice.
+          </p>
+        </div>
+        <div class="panel">
+          <h2>API settings</h2>
+          <label for="apiBaseUrl">Backend API base URL</label>
+          <input id="apiBaseUrl" type="url" placeholder="https://api.yourdomain.com" />
+          <div class="row">
+            <button id="saveApiBaseUrl" type="button">Save</button>
+            <button id="resetApiBaseUrl" type="button" class="secondary">Reset</button>
+          </div>
+          <p class="hint">
+            The value is saved in your browser. Your backend must allow CORS from your Netlify domain.
+          </p>
+        </div>
+      </header>
+
+      <section class="panel">
+        <h2>Run extraction</h2>
+        <div class="grid">
+          <label>
+            File
+            <input id="fileInput" type="file" accept=".pdf,.png,.jpg,.jpeg,.webp,.tif,.tiff" />
+          </label>
+          <label>
+            Mode
+            <select id="modeSelect">
+              <option value="async">Async job</option>
+              <option value="sync">Sync response</option>
+            </select>
+          </label>
+        </div>
+        <div class="row">
+          <button id="extractButton" type="button">Start extraction</button>
+          <span id="statusText" class="status">Idle</span>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Result</h2>
+        <pre id="output">Waiting for input.</pre>
+      </section>
+    </main>
+  </body>
+</html>
